@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import GoggleAuth from "./GoggleAuth";
 
 const Header = () => {
   return (
@@ -11,6 +12,7 @@ const Header = () => {
         <Link to="/" className="item">
           All Streams
         </Link>
+        <GoggleAuth />
       </div>
     </div>
   );

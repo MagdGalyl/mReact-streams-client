@@ -1,0 +1,41 @@
+import React, { Component } from "react";
+
+class GoggleAuth extends Component {
+  state = { isSignedIn: null };
+
+  componentDidMount() {
+    window.gapi.load("client:auth2", () => {
+      window.gapi.client
+        .init({
+          ClientID:
+            "414269825269-fdkfn37aj89sq02pnlb3sojottmb65an.apps.googleusercontent.com",
+          scope: "email",
+        })
+        .then(() => {
+          this.auth = window.gapi.auth2.getAuthInstance();
+          this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+          this.auth.isSignedIn.listen(this.onAuthChange);
+        });
+    });
+  }
+
+  onAuthChange = () => {
+    this.setState({ isSignedIn: this.auth.isSignedIn });
+  };
+
+  renderAuthButton() {
+    if (this.state.isSignedIn === null) {
+      return <div>IDK if signed in</div>;
+    } else if (this.state.isSignedIn) {
+      return <div>Signed in</div>;
+    } else {
+      return <div>Not signed in</div>;
+    }
+  }
+
+  render() {
+    return <div>{this.renderAuthButton()}</div>;
+  }
+}
+
+export default GoggleAuth;
