@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 
-class GoggleAuth extends Component {
+class GoogleAuth extends React.Component {
   state = { isSignedIn: null };
 
   componentDidMount() {
     window.gapi.load("client:auth2", () => {
       window.gapi.client
         .init({
-          ClientID:
+          clientId:
             "414269825269-fdkfn37aj89sq02pnlb3sojottmb65an.apps.googleusercontent.com",
           scope: "email",
         })
@@ -20,16 +20,34 @@ class GoggleAuth extends Component {
   }
 
   onAuthChange = () => {
-    this.setState({ isSignedIn: this.auth.isSignedIn });
+    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+  };
+
+  onSignInClick = () => {
+    this.auth.signIn();
+  };
+
+  onSignOutClick = () => {
+    this.auth.signOut();
   };
 
   renderAuthButton() {
     if (this.state.isSignedIn === null) {
-      return <div>IDK if signed in</div>;
+      return null;
     } else if (this.state.isSignedIn) {
-      return <div>Signed in</div>;
+      return (
+        <button onClick={this.onSignOutClick} className="ui red google button">
+          <i className="google icon" />
+          Sign Out
+        </button>
+      );
     } else {
-      return <div>Not signed in</div>;
+      return (
+        <button onClick={this.onSignInClick} className="ui red google button">
+          <i className="google icon" />
+          Sign In with Google
+        </button>
+      );
     }
   }
 
@@ -38,4 +56,4 @@ class GoggleAuth extends Component {
   }
 }
 
-export default GoggleAuth;
+export default GoogleAuth;
