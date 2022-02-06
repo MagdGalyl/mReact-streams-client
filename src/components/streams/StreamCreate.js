@@ -3,13 +3,6 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { createStream } from "../../actions";
 
-<<<<<<< HEAD
-import { Field, reduxForm } from "redux-form";
-import { connect } from "react-redux";
-import { createStream } from "../../actions";
-
-=======
->>>>>>> 8348d320a75fdd5c013556859ca1c4ced655ec4f
 export class StreamCreate extends Component {
   renderError({ error, touched }) {
     if (touched && error) {
