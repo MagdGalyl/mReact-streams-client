@@ -31,10 +31,10 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" exact element={<StreamList />} />
-          <Route path="/streams/new" element={<StreamCreate />} />
-          <Route path="/streams/edit" element={<StreamEdit />} />
-          <Route path="/streams/delete" element={<StreamDelete />} />
-          <Route path="/streams/show" element={<StreamShow />} />
+          <Route path="/streams/new/:id" element={<StreamCreate />} />
+          <Route path="/streams/edit/:id" element={<StreamEdit />} />
+          <Route path="/streams/delete/:id" element={<StreamDelete />} />
+          <Route path="/streams/show/:id" element={<StreamShow />} />
         </Routes>
       </BrowserRouter>
     </div>

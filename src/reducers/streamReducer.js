@@ -1,4 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
+import _ from "lodash";
 import {
   CREATE_STREAM,
   FETCH_STREAMS,
@@ -7,11 +8,7 @@ import {
   EDIT_STREAM,
 } from "../actions/types";
 
-import _ from "lodash";
-
-const initialState = {};
-
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case FETCH_STREAMS:
       return { ...state, ..._.mapKeys(action.payload, "id") };
