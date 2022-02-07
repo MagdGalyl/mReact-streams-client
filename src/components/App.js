@@ -1,5 +1,7 @@
 import React from "react";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import history from "../history";
 
 import StreamList from "./streams/StreamList";
 import StreamCreate from "./streams/StreamCreate";
@@ -9,6 +11,7 @@ import StreamShow from "./streams/StreamShow";
 import Header from "./Header";
 
 //
+
 const App = () => {
   return (
     <div>
@@ -23,6 +26,7 @@ const App = () => {
         </div>
       </BrowserRouter> 
       */}
+      {/* <BrowserRouter history={history}> */}
       <BrowserRouter>
         <Header />
         <Routes>
